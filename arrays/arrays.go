@@ -2,7 +2,7 @@ package arrays
 
 import (
 	"errors"
-	"fmt"
+	"sort"
 )
 
 // building an array
@@ -60,7 +60,6 @@ func MergeSortedArrays(a, b []int) []int {
 	for i := 0; i < len(mergedArray)-1; i++ {
 		swapped := false
 		for j := 0; j < len(mergedArray)-i-1; j++ {
-			fmt.Printf("i: %d, j: %d\n", i, j)
 			if mergedArray[j] > mergedArray[j+1] {
 				mergedArray[j], mergedArray[j+1] = mergedArray[j+1], mergedArray[j]
 				swapped = true
@@ -72,4 +71,14 @@ func MergeSortedArrays(a, b []int) []int {
 	}
 
 	return mergedArray
+}
+
+func AnotherSolution(a, b []int) []int {
+	var sortedArray []int
+	sortedArray = append(sortedArray, a...)
+	sortedArray = append(sortedArray, b...)
+
+	sort.Ints(sortedArray)
+
+	return sortedArray
 }
